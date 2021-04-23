@@ -1,0 +1,6 @@
+spring:
+#  web:
+#    resources:
+#      static-locations:  [classpath:/hha/]  (改变静态路径）
+#  mvc:
+#    static-path-pattern: /res/**  （增加静态前缀）
