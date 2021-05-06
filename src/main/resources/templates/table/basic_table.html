@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="#" type="image/png">
 
     <title>Basic Table</title>
-    <div th:include="table/common_table::commonheader"></div>
+    <div th:include="common_table::commonheader"></div>
 
 </head>
 
@@ -17,7 +17,7 @@
     <section>
 
         <!-- left side start-->
-        <div th:replace="table/common_table::#leftside"></div>
+        <div th:replace="common_table::#leftside"></div>
         <!-- 左侧结束-->
 
         <!-- main content start-->
@@ -611,7 +611,7 @@
             <!--footer  end--> </div>
         <!-- main content end--> </section>
 
-    <div th:replace="table/common_table :: #commonscript"></div>
+    <div th:replace="common_table :: #commonscript"></div>
 
 </body>
 

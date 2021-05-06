@@ -1,14 +1,20 @@
 package com.springbootweb.demo01.controller;
 
+import com.springbootweb.demo01.bean.City;
 import com.springbootweb.demo01.bean.User;
+import com.springbootweb.demo01.bean.Usr;
+import com.springbootweb.demo01.service.CityService;
+import com.springbootweb.demo01.service.UsrService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -36,5 +42,32 @@ public class indexController {
     public String mainPage() {
         return "main";
     }
+
+
+
+    @Autowired
+    UsrService usrService;
+    @ResponseBody
+    @GetMapping("/usr")
+    public Usr getUsr(@RequestParam("id") Integer id){
+        return usrService.getUsr(id);
+    }
+//
+//    @Autowired
+//    CityService cityService;
+//    @ResponseBody
+//    @GetMapping("/city")
+//
+//    public City getCityById(@RequestParam("id") Long id){
+//        return cityService.getById(id);
+//
+//    }
+
+
+
+
+
+
+
 
 }

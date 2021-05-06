@@ -28,14 +28,14 @@
 
 <section>
     <!-- left side start-->
-    <div th:replace="table/common_table::#leftside"></div>
+    <div th:replace="common_table::#leftside"></div>
     <!-- left side end-->
 
     <!-- main content start-->
     <div class="main-content" >
 
         <!-- header section start-->
-        <div th:replace="table/common_table::#headersection"></div>
+        <div th:replace="common_table::#headersection"></div>
         <!-- header section end-->
 
         <!-- page heading start-->
@@ -109,13 +109,6 @@
     <!-- main content end-->
 </section>
 
-<!-- Placed js at the end of the document so the pages load faster -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/modernizr.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
 
 <!--dynamic table-->
 <script type="text/javascript" language="javascript" src="js/advanced-datatable/js/jquery.dataTables.js"></script>
@@ -123,8 +116,7 @@
 <!--dynamic table initialization -->
 <script src="js/dynamic_table_init.js"></script>
 
-<!--common scripts for all pages-->
-<script src="js/scripts.js"></script>
+<div th:replace="common_table :: #commonscript"></div>
 
 </body>
 </html>
