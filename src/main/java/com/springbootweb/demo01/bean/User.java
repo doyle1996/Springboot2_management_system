@@ -1,6 +1,8 @@
 package com.springbootweb.demo01.bean;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.*;
+import org.springframework.data.relational.core.mapping.Table;
 
 @ToString
 @AllArgsConstructor
@@ -8,6 +10,14 @@ import lombok.*;
 @Data
 @EqualsAndHashCode
 public class User {
+
+
+
+
     private String Username;
+
     private String Password;
+
+
+
 }

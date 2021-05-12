@@ -7,6 +7,15 @@ spring:
   jdbc:
     template:
       query-timeout: 3s
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    client-type: jedis
+    client-name: zjb
+
+
+
+
 #  web:
 #    resources:
 #      static-locations:  [classpath:/hha/]  (改变静态路径）
@@ -15,8 +24,10 @@ spring:
 
 #配置mybatis的规则
 mybatis:
-#  config-location: classpath:mybatis/mybatis-config.xml #全局配置位置 (但一般配置可以直接写在yaml文件中 全局配置文件就可以删掉了
+#  config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml  # sql映射文件位置
   configuration:
     map-underscore-to-camel-case: true
+
+#全局配置位置 (但一般配置可以直接写在yaml文件中（configuration下面) 全局配置文件就可以删掉了
 

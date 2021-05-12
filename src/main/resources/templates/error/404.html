@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html  >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -26,9 +26,9 @@
 
         <section class="error-wrapper text-center">
             <h1><img alt="" src="images/404-error.png"></h1>
-            <h2>page not found</h2>
-            <h3>We Couldn’t Find This Page</h3>
-            <a class="back-btn" href="main.html"> Back To Home</a>
+            <p th:text="${#messages}">page not found</p>
+
+            <a class="back-btn" th:href="@{/main}"> Back To Home</a>
         </section>
 
     </div>

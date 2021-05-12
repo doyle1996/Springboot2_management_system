@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="ThemeBucket">
-  <link rel="shortcut icon" href="#" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>Dynamic Table</title>
+    <title>Dynamic Table</title>
 
-  <!--dynamic table-->
-  <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css" />
+    <!--dynamic table-->
+    <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet"/>
+    <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css"/>
 
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet">
+<!--common-->
+    <div th:replace="common_table::commonheader"></div>
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-  <script src="js/respond.min.js"></script>
-  <![endif]-->
 </head>
 
 <body class="sticky-header">
@@ -32,7 +27,7 @@
     <!-- left side end-->
 
     <!-- main content start-->
-    <div class="main-content" >
+    <div class="main-content">
 
         <!-- header section start-->
         <div th:replace="common_table::#headersection"></div>
@@ -50,50 +45,78 @@
                 <li>
                     <a href="#">Data Tables</a>
                 </li>
-                <li class="active"> Dynamic Table </li>
+                <li class="active"> Dynamic Table</li>
             </ul>
         </div>
         <!-- page heading end-->
 
         <!--body wrapper start-->
         <div class="wrapper">
-        <div class="row">
-        <div class="col-sm-12">
-        <section class="panel">
-        <header class="panel-heading">
-            Dynamic Table
-            <span class="tools pull-right">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Dynamic Table
+                            <span class="tools pull-right">
                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                 <a href="javascript:;" class="fa fa-times"></a>
              </span>
-        </header>
-        <div class="panel-body">
-        <div class="adv-table">
+                        </header>
+                        <div class="panel-body">
+                            <div class="adv-table">
 
 
-        <table  class="display table table-bordered table-striped" id="dynamic-table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>用户名</th>
-            <th>密码</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="gradeX" th:each="user,stats:${users}">
-            <td th:text="${stats.count}">Trident</td>
-            <td th:text="${user.username}"></td>
-            <td>[[${user.password}]]</td>
-        </tr>
-        </tbody>
+                                <table class="display table table-bordered table-striped" id="dynamic-table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>id</th>
+                                        <th>name</th>
+                                        <th>操作</th>
 
-        </table>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="radeX" th:each="good,stat:${good_page.records}">
+                                        <td th:text="${stat.count}">Trident</td>
+                                        <td th:text="${good.id}">11</td>
 
-        </div>
-        </div>
-        </section>
-        </div>
-        </div>
+                                        <td th:text="${good.name}">22</td>
+                                        <td>
+                                            <a th:href="@{/user/delete/{id}(id=${good.id},pn=${good_page.current})}"
+                                               class="btn btn-danger btn-sm" type="button">删除</a>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <div class="dataTables_info" id="dynamic-table_info">
+                                            当前第[[${good_page.current}]]页 总计 [[${good_page.pages}]]页
+                                            共[[${good_page.total}]]条记录
+                                        </div>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="dataTables_paginate paging_bootstrap pagination">
+                                            <ul>
+                                                <li class="prev disabled"><a href="#">← 前一页</a></li>
+                                                <li th:class="${num == good_page.current?'active':''}"
+                                                    th:each="num:${#numbers.sequence(1,good_page.pages)}">
+                                                    <a th:href="@{/dynamic_table(pn=${num})}">[[${num}]]</a>
+                                                </li>
+                                                <li class="next disabled"><a href="#">下一页 → </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                    </section>
+                </div>
+            </div>
 
         </div>
         <!--body wrapper end-->
